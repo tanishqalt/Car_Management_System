@@ -25,11 +25,11 @@ User Functions
 ### Database Entities
 
 1. User (Table 1)
-	- id
-	- firstName
-	- lastName
-	- email
-	- password
+	- [x] id
+	- [x] firstName
+	- [x] lastName
+	- [x] email
+	- [x] password
 2. Booking (Table 2)
 	- bookingID
 	- userID - Foreign Key
@@ -41,7 +41,14 @@ User Functions
 	- carID
 	- carName
 	- carColor
-	- manufacturer
+	- costPerDay
+
+
+### Understanding Relations
+
+- A booking can only have one car. Hence: One-to-One relationship between Booking <> Car
+- A booking can only have one user. Hence: One-to-One relationship between Booking <> User
+- No relationship required between User and Car. 
 	
 
 
@@ -49,4 +56,4 @@ User Functions
 
 1. To create a database:
 	
-	create database car_management_system;
+	`create database car_management_system;`
