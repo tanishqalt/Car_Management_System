@@ -26,22 +26,22 @@ User Functions
 
 1. User (Table 1)
 	- [x] id
-	- [x] firstName
-	- [x] lastName
-	- [x] email
-	- [x] password
+	- [x] firstName / String
+	- [x] lastName / String
+	- [x] email / String
+	- [x] password / String
 2. Booking (Table 2)
-	- bookingID
-	- userID - Foreign Key
-	- carID - Foreign Key
-	- startDate
-	- endDate
-	- cost
+	- [x] bookingID
+	- [x] userID - Foreign Key / One to One
+	- [x] carID - Foreign Key / One to One
+	- [x] startDate / String
+	- [x] endDate / String
+	- [x] cost / Double
 3. Car (Table 3)
-	- [x] carID
-	- [x] carName
-	- [x] carColor
-	- [x] costPerDay
+	- [x] carID 
+	- [x] carName / String
+	- [x] carColor / String
+	- [x] costPerDay / Double
 
 
 ### Understanding Relations
