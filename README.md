@@ -5,9 +5,9 @@ Team Members: Tanishq Sharma, Dimple Diyalani
 
 ### Conditions
 
-[ ] Your web service must have at least 6 methods with atleast 3 methods that accepts a path parameter
-[ ] A UI to interact with web service
-[ ] The web service must use a database in some way. Minimum three tables required
+- [ ] Your web service must have at least 6 methods with atleast 3 methods that accepts a path parameter
+- [ ] A UI to interact with web service
+- [ ] The web service must use a database in some way. Minimum three tables required
 
 ### Basic Flow
 
