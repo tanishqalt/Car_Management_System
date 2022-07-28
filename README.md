@@ -42,3 +42,11 @@ User Functions
 	- carName
 	- carColor
 	- manufacturer
+	
+
+
+## Database Scipts
+
+1. To create a database:
+	
+	create database car_management_system;
