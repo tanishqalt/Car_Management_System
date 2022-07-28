@@ -38,10 +38,10 @@ User Functions
 	- endDate
 	- cost
 3. Car (Table 3)
-	- carID
-	- carName
-	- carColor
-	- costPerDay
+	- [x] carID
+	- [x] carName
+	- [x] carColor
+	- [x] costPerDay
 
 
 ### Understanding Relations
