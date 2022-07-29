@@ -3,6 +3,30 @@
 	<head>
 	</head>
 	<body>
-		<h1> This is register page </h1>
+		<h1> Register at Car Rental Management App </h1>
+		
+		<form action="#" th:action="@{/newUser}" th:object="${user}" method="POST">
+
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{id}" />
+            <br/>
+			<label> First Name </label>
+            <input type="text" th:field="*{firstName}" class="form-control mb-4 col-4">
+            
+            <br/>
+			<label> Last Name </label>
+            <input type="text" th:field="*{lastName}" class="form-control mb-4 col-4">
+
+			 <br/>
+			<label> Email </label>
+            <input type="text" th:field="*{email}" class="form-control mb-4 col-4">
+            
+             <br/>
+            <label> Password </label>
+            <input type="text" th:field="*{password}" class="form-control mb-4 col-4">
+            
+             <br/>
+            <button type="submit" class="btn btn-info col-2"> Register </button>
+        </form>
 	</body>
 </html>

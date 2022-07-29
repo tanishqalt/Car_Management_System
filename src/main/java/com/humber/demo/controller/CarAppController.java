@@ -1,11 +1,17 @@
 package com.humber.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.humber.demo.model.Car;
+import com.humber.demo.model.User;
 import com.humber.demo.service.BookingService;
 import com.humber.demo.service.CarService;
 import com.humber.demo.service.UserService;
@@ -23,32 +29,40 @@ public class CarAppController {
 	private BookingService bookingService;
 	
 	
-	
 	/**
 	 * UI Pages
 	 */
 	
 	// Login Page
 	@GetMapping("/")
-	public String Homepage() {
+	public String Homepage(Model model) {
 		return "index";
 	}
 	
 	// Register Page
 	@GetMapping("/register")
-	public String RegisterPage() {
+	public String RegisterPage(Model model) {
+		
+		// creating a model to bind data to.
+		User user = new User();
+		model.addAttribute(user);
 		return "register";
 	}
 	
 	// All Cars Page
 	@GetMapping("/cars")
-	public String AllCarsPage() {
+	public String AllCarsPage(Model model) {
+		model.addAttribute("listOfCars", carService.getAllCars());
 		return "all_cars";
 	}
 	
 	// Single Car Page
 	@GetMapping("/cars/{id}")
-	public String SingleCarPage(@PathVariable(value = "id") long id) {
+	public String SingleCarPage(@PathVariable(value = "id") long id, Model model) {
+		
+		// retrive the single car from the database
+		Car car = carService.getCarbyID(id);
+		model.addAttribute("car", car);
 		return "single_car";
 	}
 	
@@ -62,7 +76,16 @@ public class CarAppController {
 	@GetMapping("/bookings/{id}")
 	public String SingleBookingPage(@PathVariable(value = "id") long id) {
 		return "single_booking";
-	}
+	}	
 	
+	
+	
+	// API routes
+	@PostMapping("/newUser")
+    public String newUser(@ModelAttribute("user") User user) {
+        // save user to database
+        userService.newUser(user);
+        return "redirect:/";
+    }
 	
 }

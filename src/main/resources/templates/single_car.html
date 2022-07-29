@@ -4,5 +4,9 @@
 	</head>
 	<body>
 		<h1> This is Single Car Page </h1>
+		<h3> Car Name: <span th:text="${car.carName}"/> </h3>
+		<h3> Car Color: <span th:text="${car.carColor}"/> </h3>
+		<h3> Cost Per Day: USD <span th:text="${car.costPerDay}"/> </h3>
+		<button> <a th:href="@{/}"> Book </a> </button>
 	</body>
 </html>

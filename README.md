@@ -59,3 +59,42 @@ User Functions
 1. To create a database:
 	
 	`create database car_management_system;`
+	
+	
+2. To create the table
+
+```
+CREATE TABLE `car_management_system`.`bookings` (
+  `bookingID` INT NOT NULL,
+  `startDate` VARCHAR(45) NULL,
+  `endDate` VARCHAR(45) NULL,
+  `cost` DOUBLE NULL,
+  PRIMARY KEY (`bookingID`));
+  
+  
+  CREATE TABLE `car_management_system`.`cars` (
+  `carID` INT NOT NULL,
+  `carName` VARCHAR(45) NULL,
+  `carColor` VARCHAR(45) NULL,
+  `costPerDay` DOUBLE NULL,
+  PRIMARY KEY (`carID`));
+  
+  
+  CREATE TABLE `car_management_system`.`users` (
+  `id` INT NOT NULL,
+  `first_name` VARCHAR(45) NULL,
+  `last_name` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+  
+  
+Test Data In Cars Table
+INSERT INTO `car_management_system`.`cars` (`carID`, `car_name`, `car_color`, `cost_per_day`) VALUES ('1', 'CADILLAC Blackwing', 'Black', '200');
+INSERT INTO `car_management_system`.`cars` (`carID`, `car_name`, `car_color`, `cost_per_day`) VALUES ('2', 'Porsche Boxster', 'Red', '400');
+INSERT INTO `car_management_system`.`cars` (`carID`, `car_name`, `car_color`, `cost_per_day`) VALUES ('3', 'Subaru BRZ GR86', 'White', '250');
+INSERT INTO `car_management_system`.`cars` (`carID`, `car_name`, `car_color`, `cost_per_day`) VALUES ('4', 'Honda Accord', 'Red', '300');
+INSERT INTO `car_management_system`.`cars` (`carID`, `car_name`, `car_color`, `cost_per_day`) VALUES ('5', 'Kia Telluride', 'Grey', '320');
+  
+  
+ ```

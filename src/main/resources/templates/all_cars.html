@@ -4,5 +4,26 @@
 	</head>
 	<body>
 		<h1> This is All Cars Page </h1>
+		
+		 <table border="1" class="">
+            <thead>
+                <tr>
+                    <th>Car Name</th>
+                    <th>Car Color</th>
+                    <th>Cost Per Day</th>
+                    <th> Action </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="car : ${listOfCars}">
+                    <td th:text="${car.carName}"></td>
+                    <td th:text="${car.carColor}"></td>
+                    <td th:text="${car.costPerDay}"></td>
+                     <td> <a th:href="@{/cars/{id}(id=${car.carID})}" class="btn btn-primary">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+		
 	</body>
 </html>
