@@ -3,8 +3,10 @@ import java.util.List;
 import com.humber.demo.model.User;
 
 public interface UserService {
+
 	
-	// Admin Function
-	List<User> getAllUsers();
+	// Method 1 – Save a new user - Register Method
+	
+	// Method 2 – Retrieve a single user
 	
 }

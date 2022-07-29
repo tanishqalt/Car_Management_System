@@ -4,6 +4,10 @@ import com.humber.demo.model.Booking;
 
 public interface BookingService {
 
-	// Method 5
+	// Method 4 – New Booking
+	
+	// Method 5 – Retrieve All Books
 	List<Booking> getAllBookings();
+	
+	// Method 6 – Delete Booking
 }

@@ -5,7 +5,7 @@ import com.humber.demo.model.Car;
 
 public interface CarService {
 	
-	// Method 1
+	// Method 3 – Get All Cars
 	List<Car> getAllCars();
-
+	
 }

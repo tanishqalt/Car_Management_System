@@ -14,5 +14,7 @@ public class CarServiceImpl implements CarService {
 	public List<Car> getAllCars() {
 		return carRepository.findAll();
 	}
+	
+	// get a single car
 
 }
