@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.humber.demo.model.Car;
 import com.humber.demo.model.User;
@@ -87,5 +89,24 @@ public class CarAppController {
         userService.newUser(user);
         return "redirect:/";
     }
+	
+	@GetMapping("/loginUser")
+	public String loginUser(ModelMap model, @RequestParam String email, @RequestParam String password) {
+		
+		// get user by email
+		User user = userService.getUserbyEmail(email);
+		
+		// check the password
+		if(user.getPassword() == password) {
+			// login successful
+			System.out.print("Login successful");
+			model.addAttribute("user", user);
+			// if the password match, redirect to all cars page
+		} else {
+			// if the passwords don't match, redirect to same page
+			System.out.print("Login failed");
+		}
+		return "index";
+	}
 	
 }

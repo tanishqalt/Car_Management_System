@@ -9,4 +9,7 @@ public interface UserService {
 	// Method 2 – Retrieve a single user
 	User getUserbyID(long id);
 	
+	// Method X – Retrieve a single user by email
+	User getUserbyEmail(String email);
+	
 }
