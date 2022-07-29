@@ -8,4 +8,5 @@ public interface CarService {
 	// Method 3 – Get All Cars
 	List<Car> getAllCars();
 	
+	// Method 7 – Get Single Car	
 }

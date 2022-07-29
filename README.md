@@ -13,12 +13,14 @@ Team Members: Tanishq Sharma, Dimple Diyalani
 
 User Functions
 
-1. User can create an account (Register) - Method 1
-2. User can login – Method 2
-3. User can view all cars available (/GetAllCars) – Method 3
-4. User can book a car from a particular time period – Method 4
-5. User can visit my bookings – all the cars user have previously booked – Method 5
-6. User can cancel a booking – Method 6
+1. CRUD 1 – User can create an account (Register)
+2. CRUD 2 – User can login
+3. CRUD 3 – User can view all cars available (/GetAllCars)
+4. CRUD 4 – User can book a car from a particular time period
+5. CRUD 5 – User can visit my bookings – all the cars user have previously booked
+6. CRUD 6 – User can cancel a booking
+7. CRUD 7 – Retrieve Single Car
+8. CRUD 8 – Retrieve Single Booking
 
 
 
