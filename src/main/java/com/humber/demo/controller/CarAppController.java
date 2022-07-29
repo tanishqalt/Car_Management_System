@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.humber.demo.model.Booking;
 import com.humber.demo.model.Car;
 import com.humber.demo.model.User;
 import com.humber.demo.service.BookingService;
@@ -70,19 +71,25 @@ public class CarAppController {
 	
 	// All Bookings Page
 	@GetMapping("/bookings")
-	public String MyBookings() {
+	public String MyBookings(Model model) {
+		model.addAttribute("listOfBookings", bookingService.getAllBookings());
 		return "all_bookings";
 	}
 	
 	// Single Booking Page
 	@GetMapping("/bookings/{id}")
-	public String SingleBookingPage(@PathVariable(value = "id") long id) {
+	public String SingleBookingPage(@PathVariable(value = "id") long id, Model model) {
+		// retrive the single booking from the database
+		Booking booking = bookingService.getBookingbyID(id);
+		model.addAttribute("booking", booking);
 		return "single_booking";
 	}	
 	
 	
 	
 	// API routes
+	
+	// API route to register a new user and redirect them to homepage
 	@PostMapping("/newUser")
     public String newUser(@ModelAttribute("user") User user) {
         // save user to database
@@ -90,6 +97,8 @@ public class CarAppController {
         return "redirect:/";
     }
 	
+	
+	// API route to login the user. 
 	@GetMapping("/loginUser")
 	public String loginUser(ModelMap model, @RequestParam String email, @RequestParam String password) {
 		
@@ -111,5 +120,12 @@ public class CarAppController {
 		}
 		return "index";
 	}
+	
+	// API route to add a new booking and redirect to mybookings page
+	
+	
+	// API route to delete the booking and redirect to mybookings page
+	
+	
 	
 }

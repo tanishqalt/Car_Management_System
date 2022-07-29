@@ -12,4 +12,7 @@ public interface BookingService {
 	
 	// Method 6 – Delete Booking
 	void deleteBookingByID(long id);
+	
+	// Method 8 – Get Single Booking	
+	Booking getBookingbyID(long id);
 }

@@ -4,5 +4,26 @@
 	</head>
 	<body>
 		<h1> This is All Bookings Page </h1>
+		
+		 <table border="1" class="">
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th> Cost </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="booking : ${listOfBookings}">
+                    <td th:text="${booking.bookingID}"></td>
+                    <td th:text="${booking.startDate}"></td>
+                    <td th:text="${booking.endDate}"></td>
+                     <td> <a th:href="@{/bookings/{id}(id=${booking.bookingID})}" class="btn btn-primary">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+		
 	</body>
 </html>
