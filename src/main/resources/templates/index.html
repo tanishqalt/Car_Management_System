@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html>
 	<head>
+			<title> Car Management System – Login </title>
+		  <script src="https://cdn.tailwindcss.com"></script>
 	</head>
-	<body>
-		<h1> Welcome to Car Rental Management Page. </h1>
-		<p> Please login to access the portal </p>
-		
-		<form action="#" th:action="@{/loginUser}" method="get">
-			<label> Email </label>
-            <input type="text" name="email" class="form-control mb-4 col-4">
+	<body class="bg-gray-50 h-screen">
+		<div class="p-6">
+			<div class="flex flex-col items-center justify-center mt-24">
+				<h1 class="text-3xl font-bold text-center"> Welcome to Car Rental <br/> Management Page </h1>
+				<p class="mt-3"> Please login to access the portal </p>
+			</div>
+			<div class="p-10 flex items-center justify-center">
+			<div class="p-10 bg-white border">
+			<form action="#" th:action="@{/loginUser}" method="get">
+			<label class="text-xs"> Email </label>
+			<br/>
+            <input type="text" name="email" class="border mt-2 px-2 py-1 text-sm">
             <br/>
-            <label> Password </label>
-            <input type="text" name="password" class="form-control mb-4 col-4">
+            <div class="mt-3">
+            <label class="text-xs"> Password </label>
             <br/>
-            <button type="submit"> Submit </button>
-		</form>
+            <input type="password" name="password" class="border mt-2 px-2 py-1 text-sm">
+            </div>
+            <br/>
+            <button class="px-3 py-2 text-sm bg-blue-600 text-white rounded-md w-full" type="submit"> Submit </button>
+			</form>
+			
+			<div class="mt-3">
+				<a th:href="@{/register}" class="text-xs underline text-gray-600"> Not a user? Register </a> 
+			</div>
+			</div>
+			</div>
+		</div>
 	</body>
 </html>
