@@ -4,7 +4,7 @@
 	</head>
 	<body>
 		<h1> This is All Cars Page </h1>
-		
+		<h3> User's First Name: <span th:text="${user.firstName}"/> </h3>
 		 <table border="1" class="">
             <thead>
                 <tr>
@@ -19,7 +19,7 @@
                     <td th:text="${car.carName}"></td>
                     <td th:text="${car.carColor}"></td>
                     <td th:text="${car.costPerDay}"></td>
-                     <td> <a th:href="@{/cars/{id}(id=${car.carID})}" class="btn btn-primary">View</a>
+                     <td> <a th:href="@{/cars/{id}(id=${car.carID},userID=${user.id})}" class="btn btn-primary">View</a>
                     </td>
                 </tr>
             </tbody>

@@ -4,9 +4,32 @@
 	</head>
 	<body>
 		<h1> This is Single Car Page </h1>
+		<h3> User's First Name: <span th:text="${user.firstName}"/> </h3>
 		<h3> Car Name: <span th:text="${car.carName}"/> </h3>
 		<h3> Car Color: <span th:text="${car.carColor}"/> </h3>
 		<h3> Cost Per Day: USD <span th:text="${car.costPerDay}"/> </h3>
-		<button> <a th:href="@{/}"> Book </a> </button>
+		
+		
+		<!-- creating a new booking -->
+		<form action="#" th:action="@{/newBooking}" th:object="${booking}" method="post">
+			 <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{bookingID}" />
+			 <!-- Add hidden form field to handle userID -->
+			 <input type="hidden" name="user" th:value=${user.id} />
+			  <!-- Add hidden form field to handle carID -->
+			 <input type="hidden" name="car" th:value=${car.carID} />
+			 <input type="hidden" name="status" th:value="active" />
+			 <input type="date"  th:field="*{startDate}"/>
+			 <input type="date" th:field="*{endDate}"/>
+			 <input type="text" name="cost" th:value="${car.costPerDay}"/>
+			<button type="submit"> Book </button>
+		</form>
+		
+		
+		<button>
+		<a th:href="@{/cars?userID={userID}(userID=${user.id})}">
+		Go back
+		</a>
+		</button>
 	</body>
 </html>

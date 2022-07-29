@@ -5,5 +5,15 @@
 	<body>
 		<h1> Welcome to Car Rental Management Page. </h1>
 		<p> Please login to access the portal </p>
+		
+		<form action="#" th:action="@{/loginUser}" method="get">
+			<label> Email </label>
+            <input type="text" name="email" class="form-control mb-4 col-4">
+            <br/>
+            <label> Password </label>
+            <input type="text" name="password" class="form-control mb-4 col-4">
+            <br/>
+            <button type="submit"> Submit </button>
+		</form>
 	</body>
 </html>

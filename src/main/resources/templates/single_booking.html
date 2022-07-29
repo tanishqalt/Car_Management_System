@@ -4,5 +4,36 @@
 	</head>
 	<body>
 		<h1> This is Single Booking Page </h1>
+		<h3> Booking ID: <span th:text="${booking.bookingID}"/> </h3>
+		<h3> Booking Start Date: <span th:text="${booking.startDate}"/> </h3>
+		<h3> Booking End Date: <span th:text="${booking.endDate}"/> </h3>
+		<h3> Booking Cost: <span th:text="${booking.cost}"/> </h3>
+		<button>
+		
+			<!-- Cancel a new booking -->
+		<form action="#" th:action="@{/cancelBooking}" th:object="${booking}" method="post">
+			 <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{bookingID}" />
+			 <!-- Add hidden form field to handle userID -->
+			 <input type="hidden" name="user" th:value=${booking.user.id} />
+			  <!-- Add hidden form field to handle carID -->
+			 <input type="hidden" name="car" th:value=${booking.car.carID} />
+			 <input type="hidden" name="status" th:value="cancel" />
+			 <input type="date"  th:field="*{startDate}"/>
+			 <input type="date" th:field="*{endDate}"/>
+			 <input type="text" name="cost" th:value="${booking.cost}"/>
+			<button type="submit"> Cancel </button>
+		</form>
+		
+		
+		<a th:href="@{/deleteBooking/{id}(id=${booking.bookingID}, userID=${user.id})}">
+		Delete Booking
+		</a>
+		</button>
+		<button>
+		<a th:href="@{/bookings?userID={userID}(userID=${user.id})}">
+		Go To All Booking
+		</a>
+		</button>
 	</body>
 </html>

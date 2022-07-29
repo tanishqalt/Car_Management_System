@@ -1,6 +1,5 @@
 package com.humber.demo.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,13 +26,16 @@ public class Booking {
 	@Column(name = "cost")
 	private double cost;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "userID", referencedColumnName="id")
 	private User user;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "carID", referencedColumnName="carID")
 	private Car car;
+	
+	@Column(name = "status")
+	private String status;
 
 	public long getBookingID() {
 		return bookingID;
@@ -82,6 +84,16 @@ public class Booking {
 	public void setCar(Car car) {
 		this.car = car;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
 	
 	
 }

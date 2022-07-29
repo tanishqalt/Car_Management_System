@@ -2,6 +2,8 @@ package com.humber.demo.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.humber.demo.model.Booking;
 import com.humber.demo.model.Car;
@@ -54,34 +57,58 @@ public class CarAppController {
 	
 	// All Cars Page
 	@GetMapping("/cars")
-	public String AllCarsPage(Model model) {
+	public String AllCarsPage(Model model,  @RequestParam long userID) {
+		// Fetch the user
+		User user = userService.getUserbyID(userID);
+		
 		model.addAttribute("listOfCars", carService.getAllCars());
+		model.addAttribute("user", user);
 		return "all_cars";
 	}
 	
 	// Single Car Page
 	@GetMapping("/cars/{id}")
-	public String SingleCarPage(@PathVariable(value = "id") long id, Model model) {
+	public String SingleCarPage(@PathVariable(value = "id") long id, Model model, @RequestParam long userID) {
+		// Fetch the user
+		User user = userService.getUserbyID(userID);
 		
 		// retrive the single car from the database
 		Car car = carService.getCarbyID(id);
+		
+		
+		// creating a model to bind data to
+		Booking booking = new Booking();
+		
 		model.addAttribute("car", car);
+		model.addAttribute("user", user);
+		model.addAttribute("booking", booking);
 		return "single_car";
 	}
 	
 	// All Bookings Page
 	@GetMapping("/bookings")
-	public String MyBookings(Model model) {
+	public String MyBookings(Model model, @RequestParam long userID) {
+		
+		// Fetch the user
+		User user = userService.getUserbyID(userID);
+		
+		// change this to get all bookings by userID
 		model.addAttribute("listOfBookings", bookingService.getAllBookings());
+		model.addAttribute("user", user);
 		return "all_bookings";
 	}
 	
 	// Single Booking Page
 	@GetMapping("/bookings/{id}")
-	public String SingleBookingPage(@PathVariable(value = "id") long id, Model model) {
+	public String SingleBookingPage(@PathVariable(value = "id") long id, Model model, @RequestParam long userID) {
+
+		// Fetch the user
+		User user = userService.getUserbyID(userID);
+	
 		// retrive the single booking from the database
 		Booking booking = bookingService.getBookingbyID(id);
 		model.addAttribute("booking", booking);
+		model.addAttribute("user", user);
 		return "single_booking";
 	}	
 	
@@ -100,7 +127,7 @@ public class CarAppController {
 	
 	// API route to login the user. 
 	@GetMapping("/loginUser")
-	public String loginUser(ModelMap model, @RequestParam String email, @RequestParam String password) {
+	public String loginUser(ModelMap model, @RequestParam String email, @RequestParam String password, RedirectAttributes redirectAttrs) {
 		
 		// get user by email
 		User user = userService.getUserbyEmail(email);
@@ -112,7 +139,7 @@ public class CarAppController {
 		if(user.getPassword().equals(password)) {
 			// login successful
 			System.out.println("Login successful");
-			model.addAttribute("user", user);
+			return "redirect:/cars?userID="+user.getId();
 			// if the password match, redirect to all cars page
 		} else {
 			// if the passwords don't match, redirect to same page
@@ -122,10 +149,48 @@ public class CarAppController {
 	}
 	
 	// API route to add a new booking and redirect to mybookings page
+	@PostMapping("/newBooking")
+    public String newBooking(@ModelAttribute("booking") Booking booking, RedirectAttributes redirectAttrs) {
+        // save user to database
+		System.out.println("User ID: "+booking.getUser().getId());
+		System.out.println("Car ID: "+booking.getCar().getCarID());
+		System.out.println("Start Date: "+booking.getStartDate());
+		System.out.println("End Date: "+booking.getEndDate());
+		System.out.println("Cost: "+booking.getCost());
+		
+        bookingService.newBooking(booking);
+        redirectAttrs.addFlashAttribute("user", booking.getUser());
+        long userID=booking.getUser().getId();
+        return "redirect:/bookings?userID="+userID;
+    }
+	
+	
+	// API route to add a new booking and redirect to mybookings page
+		@PostMapping("/cancelBooking")
+	    public String cancelBooking(@ModelAttribute("booking") Booking booking, RedirectAttributes redirectAttrs) {
+	        // save user to database
+			System.out.println("User ID: "+booking.getUser().getId());
+			System.out.println("Car ID: "+booking.getCar().getCarID());
+			System.out.println("Start Date: "+booking.getStartDate());
+			System.out.println("End Date: "+booking.getEndDate());
+			System.out.println("Cost: "+booking.getCost());
+			
+	        bookingService.newBooking(booking);
+	        redirectAttrs.addFlashAttribute("user", booking.getUser());
+	        long userID=booking.getUser().getId();
+	        return "redirect:/bookings?userID="+userID;
+	    }
+	
 	
 	
 	// API route to delete the booking and redirect to mybookings page
-	
+	@GetMapping("/deleteBooking/{id}")
+	public String deleteEmployee(@PathVariable(value = "id") long id, @RequestParam long userID) {
+
+        // call delete employee method 
+        this.bookingService.deleteBookingByID(id);
+        return "redirect:/bookings?userID="+userID;
+    }
 	
 	
 }

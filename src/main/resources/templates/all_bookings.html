@@ -12,6 +12,8 @@
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th> Cost </th>
+                    <th> Status </th>
+                    <th> Action </th>
                 </tr>
             </thead>
             <tbody>
@@ -19,11 +21,17 @@
                     <td th:text="${booking.bookingID}"></td>
                     <td th:text="${booking.startDate}"></td>
                     <td th:text="${booking.endDate}"></td>
-                     <td> <a th:href="@{/bookings/{id}(id=${booking.bookingID})}" class="btn btn-primary">View</a>
+                    <td th:text="${booking.status}"></td>
+                     <td th:text="${booking.cost}"></td>
+                     <td> <a th:href="@{/bookings/{id}(id=${booking.bookingID}, userID=${user.id})}" class="btn btn-primary">View</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-		
+		<button>
+		<a th:href="@{/cars?userID={userID}(userID=${user.id})}">
+		Create a new booking
+		</a>
+		</button>
 	</body>
 </html>
