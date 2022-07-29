@@ -96,15 +96,18 @@ public class CarAppController {
 		// get user by email
 		User user = userService.getUserbyEmail(email);
 		
+		System.out.println("Retrieved Password: "+user.getPassword().toString());
+		System.out.println("Entered Password: "+password.toString());
+		
 		// check the password
-		if(user.getPassword() == password) {
+		if(user.getPassword().equals(password)) {
 			// login successful
-			System.out.print("Login successful");
+			System.out.println("Login successful");
 			model.addAttribute("user", user);
 			// if the password match, redirect to all cars page
 		} else {
 			// if the passwords don't match, redirect to same page
-			System.out.print("Login failed");
+			System.out.println("Login failed");
 		}
 		return "index";
 	}
