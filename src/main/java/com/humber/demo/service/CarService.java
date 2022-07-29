@@ -9,4 +9,5 @@ public interface CarService {
 	List<Car> getAllCars();
 	
 	// Method 7 – Get Single Car	
+	Car getCarbyID(long id);
 }
