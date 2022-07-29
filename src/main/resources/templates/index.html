@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-			<title> Car Management System – Login </title>
-		  <script src="https://cdn.tailwindcss.com"></script>
+		<title> Car Management System – Login </title>
+		 <script src="https://cdn.tailwindcss.com"></script>
 	</head>
 	<body class="bg-gray-50 h-screen">
 		<div class="p-6">
@@ -12,6 +12,8 @@
 			</div>
 			<div class="p-10 flex items-center justify-center">
 			<div class="p-10 bg-white border">
+			
+			<!-- Login Form -->
 			<form action="#" th:action="@{/loginUser}" method="get">
 			<label class="text-xs"> Email </label>
 			<br/>
@@ -25,10 +27,13 @@
             <br/>
             <button class="px-3 py-2 text-sm bg-blue-600 text-white rounded-md w-full" type="submit"> Submit </button>
 			</form>
+			<!-- Login Form Ends -->
 			
+			<!-- Redirect to Register Page -->
 			<div class="mt-3">
 				<a th:href="@{/register}" class="text-xs underline text-gray-600"> Not a user? Register </a> 
 			</div>
+			<!-- Redirect to Register Page Ends -->
 			</div>
 			</div>
 		</div>

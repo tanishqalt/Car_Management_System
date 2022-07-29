@@ -129,8 +129,16 @@ public class CarAppController {
 	@GetMapping("/loginUser")
 	public String loginUser(ModelMap model, @RequestParam String email, @RequestParam String password, RedirectAttributes redirectAttrs) {
 		
+		if(email=="" || password=="") {
+			return "index";
+		}
+		
 		// get user by email
 		User user = userService.getUserbyEmail(email);
+		
+		if(user.equals(null)) {
+			return "index";
+		}
 		
 		System.out.println("Retrieved Password: "+user.getPassword().toString());
 		System.out.println("Entered Password: "+password.toString());

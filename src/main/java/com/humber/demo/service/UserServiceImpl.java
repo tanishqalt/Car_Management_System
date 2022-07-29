@@ -33,7 +33,16 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserbyEmail(String email) {
-		User user = this.userRepository.findByEmail(email);
+		
+		Optional <User> optional = Optional.ofNullable(userRepository.findByEmail(email));
+		User user = null;
+		
+		if(optional.isPresent()) {
+			user = optional.get();
+		} else {
+			throw new RuntimeException("User not found for email: "+email);
+		}
+		
 		return user;
 	}
 
