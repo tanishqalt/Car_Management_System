@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> All Cars – CMS </title>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body class="bg-white min-h-screen">
+		<div>
+	
+		<div class="bg-gray-50 p-6 flex justify-between">
+				<div>
+			<!-- 	👋 Welcome, <span th:text="${admin.user_name}"/>! -->
+			</div>
+<!-- 			<div class="flex space-x-4 items-center">
+				<a th:href="@{/bookings?userID={id}(id=${user.id})}" class="text-xs text-gray-600"> View All Users </a> 
+				<a th:href="@{/}" class="text-xs text-gray-600"> Logout </a> 
+			</div> -->
+		</div>
+			
+	
+		<div class="p-16">
+		<h1 class="text-xl font-bold"> List of Users: </h1>
+		 <table border="1" class="mt-4 table-auto w-full">
+            <thead>
+                <tr class="text-left">
+                    <th class="uppercase bg-gray-50 text-gray-500 p-3">First Name</th>
+                    <th class="uppercase bg-gray-50 text-gray-500 p-3">Last Name</th>
+                    <th class="uppercase bg-gray-50 text-gray-500 p-3">Email</th>
+                    <th class="uppercase bg-gray-50 text-gray-500 p-3"> Action </th>
+                </tr>
+            </thead>
+            <tbody class="pt-3">
+                <tr class="pt-3 border" th:each="user : ${listOfUsers}">
+                    <td class="px-3" th:text="${user.firstName}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <td th:text="${user.email}"></td>
+                     <td class="p-4"> 
+                     <a class="bg-blue-500 text-white px-3 py-2 text-sm rounded" th:href="@{/selectedUserBookings/{userID}(userID=${user.id})}">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
+		</div>
+	</body>
+</html>

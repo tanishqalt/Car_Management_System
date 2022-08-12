@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> All Cars – CMS </title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<style>
+		.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+		</style>
+	</head>
+	<body class="bg-white min-h-screen">
+		<div>
+	
+		<div class="bg-gray-50 p-6 flex justify-between">
+
+		</div>
+			
+	
+		<div class="p-16">
+		<h1 class="text-xl font-bold"> We have a range cars for you to choose from: </h1>
+		 <table border="1" class="mt-4 table-auto w-full">
+            <thead>
+                <tr class="text-left">
+                    <th class="uppercase bg-gray-50 text-gray-500 p-3">booking ID</th>
+                    <th class="uppercase bg-gray-50 text-gray-500 p-3">start date</th>
+                    <th class="uppercase bg-gray-50 text-gray-500 p-3">end date</th>
+                    <th class="uppercase bg-gray-50 text-gray-500 p-3">cost</th>
+                    <th class="uppercase bg-gray-50 text-gray-500 p-3">status</th>
+                    <th class="uppercase bg-gray-50 text-gray-500 p-3"> Action </th>
+                </tr>
+            </thead>
+            <tbody class="pt-3">
+                <tr class="pt-3 border" th:each="booking : ${listOfBookings}">
+                    <td class="px-3" th:text="${booking.bookingID}"></td>
+                    <td th:text="${booking.startDate}"></td>
+                    <td th:text="${booking.endDate}"></td>
+                    <td th:text="${booking.cost}"></td>
+                    <td th:text="${booking.status}"></td>
+                    <td> <a th:href="@{/bookCar/{id}(id=${booking.bookingID})}" class="button">Book</a>
+					    <a th:href="@{/declineCar/{id}(id=${booking.bookingID})}" class="button">Decline</a>
+					</td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
+		</div>
+	</body>
+</html>

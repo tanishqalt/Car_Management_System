@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Car Management System – Login </title>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body class="bg-gray-50 h-screen">
+		<div class="p-6">
+			<div class="flex flex-col items-center justify-center mt-24">
+				<h1 class="text-3xl font-bold text-center"> Welcome to Car Rental <br/> Management Page </h1>
+				<p class="mt-3"> Please login to access the portal </p>
+			</div>
+			<div class="p-10 flex items-center justify-center">
+			<div class="p-10 bg-white border  w-1/4">
+			
+			<!-- Login Form -->
+			<form action="#" th:action="@{/adminLogin}" method="get">
+			<label class="text-xs"> Username </label>
+			<br/>
+            <input type="text" name="username" class="border mt-2 px-2 py-1 text-sm w-full">
+            <br/>
+            <div class="mt-3">
+            <label class="text-xs"> Password </label>
+            <br/>
+            <input type="password" name="password" class="border mt-2 px-2 py-1 text-sm w-full">
+            </div>
+            <br/>
+            <button class="px-3 py-2 text-sm bg-blue-600 text-white rounded-md w-full" type="submit"> Submit </button>
+			</form>
+			<!-- Login Form Ends -->
+			
+			<!-- Redirect to Register Page -->
+			<div class="mt-3">
+				<a th:href="@{/register}" class="text-xs underline text-gray-600"> Not a user? Register </a> 
+			</div>
+			<div class="mt-3">
+				<a th:href="@{/admin}" class="text-xs underline text-gray-600"> Admin? </a> 
+			</div>
+			<!-- Redirect to Register Page Ends -->
+			</div>
+			</div>
+		</div>
+	</body>
+</html>
